@@ -136,7 +136,13 @@ hr{
         justify-content: space-evenly;
         color: #666;
     }
+    .hud p{
+        font-size: 15px;
+    }
     .hud_total, .hud_total_recovered, .hud_total_deaths{
         font-size: 6vw;
+    }
+    .card{
+        font-size: 15px;
     }
 }
