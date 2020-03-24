@@ -1,14 +1,15 @@
 const contries = [];
 const card = document.querySelector('.card_body');
 const elements = []
-
-
+const hudCorfirm = document.querySelector('.hud_total');
+const hudWorld = document.querySelector('.hud_total_recovered');
+const hudDeaths = document.querySelector('.hud_total_deaths');
 
 
 function getData(){
 
 
-    fetch("https://api.covid19api.com/summary")
+fetch("https://api.covid19api.com/summary")
 .then(res => res.json())
 .then(({Countries}) => {
     
@@ -58,23 +59,38 @@ function getData(){
             newReco.textContent = `New Recovery: ${NewRecovered}`;  
             totalReco.textContent = `Total Recovery: ${TotalRecovered}`;  
             
-            div.appendChild(country)
-            div.appendChild(newCornfirm)
-            div.appendChild(TotalCornfirm)
-            div.appendChild(newDeath)
-            div.appendChild(totalDeath)
-            div.appendChild(newReco)
-            div.appendChild(totalReco)
+            div.appendChild(country);
+            div.appendChild(newCornfirm);
+            div.appendChild(TotalCornfirm);
+            div.appendChild(newDeath);
+            div.appendChild(totalDeath);
+            div.appendChild(newReco);
+            div.appendChild(totalReco);
 
 
+            card.appendChild(div);
 
-
-            card.appendChild(div)
-
-            
-            
+            console.log(div.getAttribute('data-country'))
 
     });
+    const confirm = Countries.reduce((acc, itr) => {
+        return acc += parseFloat( itr.TotalConfirmed);
+    }, 0);
+
+    const recovered = Countries.reduce((acc, itr) => {
+        return acc += parseFloat( itr.TotalRecovered);
+    }, 0);
+    
+    const deaths = Countries.reduce((acc, itr) => {
+        return acc += parseFloat( itr.TotalDeaths);
+    }, 0);
+    
+    hudCorfirm.textContent = confirm.toLocaleString();
+    hudWorld.textContent = recovered.toLocaleString();
+    hudDeaths.textContent = deaths.toLocaleString();
+
+
+  
    
 }).catch(error => console.log(console.log(Error)));
 

@@ -50,6 +50,7 @@ header p{
 }
 .main-section form{
     width: 100%;
+    margin: 1.5rem 0;
 }
 .main-section form p{
     color: var(--primary-color);
@@ -85,6 +86,7 @@ header p{
     grid-template-columns: repeat(3, 1fr);
     grid-gap:30px;
     padding: 2rem;
+    
 }
 .card{
     background-color: #fff;
@@ -93,9 +95,27 @@ header p{
     text-align: left;
     border-radius: 3px;
     transition: all .4s;
+    color: #555
 }
 .card:hover{
     transform: scale(1.10);
+}
+.hud{
+    display: flex;
+    justify-content: space-evenly;
+    color: #666;
+}
+.hud_total_deaths{
+    color: red;
+}
+.hud_total{
+    color: chocolate;
+}
+.hud_total_recovered{
+    color: green;
+}
+.hud_total, .hud_total_recovered, .hud_total_deaths{
+    font-size: 2vw;
 }
 .name{
     display: block;
@@ -109,5 +129,14 @@ hr{
 @media screen and (max-width: 700px ){
     .card_body{
         grid-template-columns: 1fr;
+    }
+    .hud{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: #666;
+    }
+    .hud_total, .hud_total_recovered, .hud_total_deaths{
+        font-size: 6vw;
     }
 }
