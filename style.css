@@ -1,16 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
+
+
+
+/* resets */
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 :root{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:  'Arvo', serif; ;
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
     --primary-color: red;
 }
 a{
     text-decoration: none;
     color: inherit;
 }
+
+/* container */
 .container{
     width: 90%;
     max-width: 1100px;
@@ -29,6 +38,8 @@ a{
     z-index: -1;
 
 }
+
+/* headers and contents */
 header{
     padding: 2rem;
     text-align: center;
@@ -44,6 +55,7 @@ header p{
     font-weight: 600;
     font-size: 2rem;
 }
+/* main section cotaining form and cards */
 .main-section{
     text-align: center;
     padding: 2rem 0;
@@ -57,12 +69,24 @@ header p{
     font-size: 2rem;
 }
 .main-section form input{
-    width: 80%;
+    width: 90%;
     padding: .4rem 1rem;
-    margin: 1rem;
-    border: 1px solid var(--primary-color);
+    
+    border: none;
     outline: none;
     color: var(--primary-color);
+}
+.main-section form input::placeholder{
+    color: chocolate;
+}
+.search_space{
+    background-color: #fff;
+    border: 1px solid red;
+    width: 50%;
+    margin: 2rem auto;
+    padding: .4rem .6rem;
+    border-radius: 20px
+    
 }
 .main-section form button{
     display: block;
@@ -79,6 +103,9 @@ header p{
 }
 .main-section form button:hover{
     opacity: .6;
+}
+.name{
+    display: block;
 }
 
 .card_body{
@@ -100,6 +127,8 @@ header p{
 .card:hover{
     transform: scale(1.10);
 }
+
+/* heads up dispalay */
 .hud{
     display: flex;
     justify-content: space-evenly;
@@ -117,18 +146,38 @@ header p{
 .hud_total, .hud_total_recovered, .hud_total_deaths{
     font-size: 2vw;
 }
-.name{
-    display: block;
-}
+
 hr{
     background-color: chocolate;
 }
 .card_item{
     margin: .4rem .2rem;
 }
-@media screen and (max-width: 700px ){
+
+.danger{
+    color:var(--primary-color);
+}
+.success{
+    color: green;
+}
+.suna{
+    color: chocolate;
+}
+
+footer{
+    padding-bottom: 2rem;
+}
+.page-views{
+    text-align: center;
+    margin: .5rem auto;
+    color: #555;
+}
+
+/* media queries had to write many to keep it fully rsponsive
+since i used pure css */
+@media screen and (max-width: 750px ){
     .card_body{
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
     .hud{
         display: flex;
@@ -145,4 +194,201 @@ hr{
     .card{
         font-size: 15px;
     }
+}
+
+@media screen and (max-width: 625px ){
+  
+    .hud{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: #666;
+    }
+    .hud p{
+        font-size: 12px;
+    }
+    .hud_total, .hud_total_recovered, .hud_total_deaths{
+        font-size: 6vw;
+    }
+    .card{
+        font-size: 13px;
+    }
+    header p{
+        color: chocolate;
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+    }
+    header h1{
+       
+        font-size: 3rem;
+    }
+    .main-section form input{
+        width: 80%;
+        padding: .2rem .5rem;
+        
+        border: none;
+        outline: none;
+        color: var(--primary-color);
+    }
+    .search_space{
+        background-color: #fff;
+        border: 1px solid red;
+        width: 80%;
+        margin: 2rem auto;
+        padding-right: 1px;
+        border-radius: 15px;
+        
+    }
+   
+}
+
+@media screen and (max-width: 500px){
+    .card_body{
+        grid-template-columns: 1fr;
+    }
+  
+    
+}
+
+@media screen and (max-width: 420px ){
+  
+    .hud{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: #666;
+    }
+    .hud p{
+        font-size: 12px;
+    }
+    .hud_total, .hud_total_recovered, .hud_total_deaths{
+        font-size: 6vw;
+    }
+    .card{
+        font-size: 13px;
+    }
+    header p{
+        color: chocolate;
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+    }
+    header h1{
+       
+        font-size: 3rem;
+    }
+    .main-section form input{
+        width: 80%;
+        padding: .2rem .5rem;
+        
+        border: none;
+        outline: none;
+        color: var(--primary-color);
+    }
+    .search_space{
+        background-color: #fff;
+        border: 1px solid red;
+        width: 80%;
+        margin: 2rem auto;
+        padding-right: 1px;
+        border-radius: 15px;
+        
+    }
+   
+}
+
+@media screen and (max-width: 411px ){
+  
+    .hud{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: #666;
+    }
+    .hud p{
+        font-size: 12px;
+    }
+    .hud_total, .hud_total_recovered, .hud_total_deaths{
+        font-size: 6vw;
+    }
+    .card{
+        font-size: 13px;
+    }
+    header p{
+        color: chocolate;
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+    }
+    header h1{
+       
+        font-size: 3rem;
+    }
+    .main-section form input{
+        width: 80%;
+        padding: .2rem .5rem;
+        
+        border: none;
+        outline: none;
+        color: var(--primary-color);
+    }
+    .search_space{
+        background-color: #fff;
+        border: 1px solid red;
+        width: 80%;
+        margin: 2rem auto;
+        padding-right: 1px;
+        border-radius: 15px;
+        
+    }
+   
+}
+
+
+@media screen and (max-width: 320px ){
+  
+    .hud{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: #666;
+    }
+    .hud p{
+        font-size: 12px;
+    }
+    .hud_total, .hud_total_recovered, .hud_total_deaths{
+        font-size: 6vw;
+    }
+    .card{
+        font-size: 13px;
+    }
+    header p{
+        color: chocolate;
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+    }
+    header h1{
+       
+        font-size: 3rem;
+    }
+    .main-section form input{
+        width: 80%;
+        padding: .2rem .5rem;
+        
+        border: none;
+        outline: none;
+        color: var(--primary-color);
+    }
+    .search_space{
+        background-color: #fff;
+        border: 1px solid red;
+        width: 80%;
+        margin: 2rem auto;
+        padding-right: 1px;
+        border-radius: 15px;
+        
+    }
+   
 }

@@ -4,6 +4,11 @@ const elements = []
 const hudCorfirm = document.querySelector('.hud_total');
 const hudWorld = document.querySelector('.hud_total_recovered');
 const hudDeaths = document.querySelector('.hud_total_deaths');
+const pageUpdates = document.querySelector('#page-update');
+
+const input = document.querySelector('#convid-19');
+
+
 
 
 function getData(){
@@ -39,17 +44,23 @@ fetch("https://api.covid19api.com/summary")
             
             
             div.classList.add("card");
+            
             div.setAttribute('data-country', Country)
             
             
             
             country.classList.add("name");
+            country.classList.add("suna");
             newCornfirm.classList.add("name");
             TotalCornfirm.classList.add("name");
             newDeath.classList.add("name");
+            newDeath.classList.add("danger");
             totalDeath.classList.add("name");
+            totalDeath.classList.add("danger");
             newReco.classList.add("name");
+            newReco.classList.add("success");
             totalReco.classList.add("name");
+            totalReco.classList.add("success");
             
             country.textContent = `Country Name: ${Country}`;
             newCornfirm.textContent = `New Confirm case: ${NewConfirmed}`;  
@@ -70,7 +81,7 @@ fetch("https://api.covid19api.com/summary")
 
             card.appendChild(div);
 
-            console.log(div.getAttribute('data-country'))
+            
 
     });
     const confirm = Countries.reduce((acc, itr) => {
@@ -90,6 +101,23 @@ fetch("https://api.covid19api.com/summary")
     hudDeaths.textContent = deaths.toLocaleString();
 
 
+    
+    input.addEventListener('keyup', () => {
+        console.log(input.value);
+
+        const blocks = document.querySelectorAll('.card');
+        blocks.forEach(ele => {
+            const atrr = ele.getAttribute('data-country').toLowerCase();
+            if(atrr.includes(input.value)){
+                ele.style.display = 'block'
+            }else{
+                ele.style.display ='none';
+            }
+        })
+
+    })
+
+
   
    
 }).catch(error => console.log(console.log(Error)));
@@ -97,14 +125,18 @@ fetch("https://api.covid19api.com/summary")
 
 }
 
-function setData(){
-    getData();
-    const divs = document.querySelectorAll(".card")
-    console.log(divs)
 
+pageViews = () => {
+    fetch('https://api.countapi.xyz/update/covid19-liveupdates/gfellah45/?amount=1')
+    .then( res => res.json())
+    .then( num => {
+        pageUpdates.innerHTML = num.value;
+    })
+    .catch( error => console.log(error))
 }
 
+getData();
+pageViews();
 
-setData()
 
 
