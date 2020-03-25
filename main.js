@@ -1,3 +1,5 @@
+// global variables
+
 const contries = [];
 const card = document.querySelector('.card_body');
 const elements = []
@@ -5,14 +7,15 @@ const hudCorfirm = document.querySelector('.hud_total');
 const hudWorld = document.querySelector('.hud_total_recovered');
 const hudDeaths = document.querySelector('.hud_total_deaths');
 const pageUpdates = document.querySelector('#page-update');
-
 const input = document.querySelector('#convid-19');
 
 
 
-
+// this function gets the data from the api and display 
+//  it to the user with the use of fetch api
+// also this functions hold 90% of the pages functionalities
+// it can be refactored thou
 function getData(){
-
 
 fetch("https://api.covid19api.com/summary")
 .then(res => res.json())
@@ -108,7 +111,7 @@ fetch("https://api.covid19api.com/summary")
         const blocks = document.querySelectorAll('.card');
         blocks.forEach(ele => {
             const atrr = ele.getAttribute('data-country').toLowerCase();
-            if(atrr.includes(input.value)){
+            if(atrr.includes(input.value.toLowerCase())){
                 ele.style.display = 'block'
             }else{
                 ele.style.display ='none';
@@ -125,6 +128,8 @@ fetch("https://api.covid19api.com/summary")
 
 }
 
+// this function is responsible for updating page views
+// it uses the live countapi to track this
 
 pageViews = () => {
     fetch('https://api.countapi.xyz/update/covid19-liveupdates/gfellah45/?amount=1')
